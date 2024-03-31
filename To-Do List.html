@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: skyblue;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: whitesmoke;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: indianred;
+    }
+
+    input[type="text"] {
+        width: calc(100% - 80px);
+        padding: 10px;
+        border: 1px solid skyblue;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin-left: 10px;
+        background-color: #4caf50;
+        color: lightgray;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .completed {
+        text-decoration: line-through;
+        color: #999;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Enter task...">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+</div>
+
+<script>
+    function addTask() {
+        var taskInput = document.getElementById("taskInput");
+        var taskList = document.getElementById("taskList");
+        var taskText = taskInput.value.trim();
+
+        if (taskText !== "") {
+            var li = document.createElement("li");
+            li.textContent = taskText;
+            li.addEventListener("click", toggleTask);
+            taskList.appendChild(li);
+            taskInput.value = "";
+        }
+    }
+
+    function toggleTask() {
+        this.classList.toggle("completed");
+    }
+</script>
+
+</body>
+</html>
